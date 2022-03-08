@@ -2,7 +2,6 @@ from tkinter import *
 from functools import partial
 import random
 
-
 class Start:
     def __init__(self, parent):
         
@@ -27,11 +26,11 @@ class Start:
         self.entry_error_frame.grid(row=2)
 
         # Entry box
-        self.start_amount_entry = Entry(self.start_frame, font="Arial 16 bold")
+        self.start_amount_entry = Entry(self.entry_error_frame, font="Arial 16 bold", width=10)
         self.start_amount_entry.grid(row=0, column=0)
 
         # Add funds button
-        self.add_funds_button = Button(self.entry_error_frame, font="Arial 14 bold", text="Add Funds", command=self.check_funds)
+        self.add_funds_button = Button(self.entry_error_frame, font="Arial 14 bold", text="Add Funds", command=self.check_funds, padx=10)
         self.add_funds_button.grid(row=0, column=1)
         
         # Amount Error Label
@@ -118,7 +117,6 @@ class Start:
         # Hide start up window
         root.withdraw()
 
-
 class Game:
     def __init__(self, partner, stakes, starting_balance):
         print(stakes)
@@ -167,6 +165,6 @@ class Game:
 # main routine
 if __name__ == "__main__":
     root = Tk()
-    root.title("title goes here")
+    root.title("Mystery Box Game")
     something = Start(root)
     root.mainloop()
