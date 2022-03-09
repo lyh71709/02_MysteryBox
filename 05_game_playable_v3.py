@@ -1,4 +1,5 @@
 from codecs import backslashreplace_errors
+from email.headerregistry import ParameterizedMIMEHeader
 from tkinter import *
 from functools import partial
 import random
@@ -19,18 +20,15 @@ class Start:
         starting_balance = 50
         stakes = 1
 
-        Game(self, stakes, starting_balance)
-
         # Hide start up window
         self.start_frame.destroy()
+
+        Game(self, stakes, starting_balance)
 
 class Game:
     def __init__(self, partner, stakes, starting_balance):
         print(stakes)
         print(starting_balance)
-
-        # Disable low stakes button
-        partner.lowstakes_button.config(state=DISABLED)
 
         # Initialise variables
         self.balance = IntVar()
@@ -42,6 +40,9 @@ class Game:
         self.multiplier = IntVar()
         self.multiplier.set(stakes)
 
+        # List for holding statistics
+        self.round_stats_list = []
+
         # GUI setup
         self.game_box = Toplevel()
 
@@ -52,7 +53,7 @@ class Game:
         self.game_frame.grid()
 
         # Heading (Row 0)
-        self.heading_label = Label(self.game_frame, text="Heading", font="Ariel 24 bold", padx=10, pady=10)
+        self.heading_label = Label(self.game_frame, text="Mystery Box", font="Ariel 24 bold", padx=10, pady=10)
         self.heading_label.grid(row=0)
 
         # Instructions Label (Row 1)
@@ -65,15 +66,15 @@ class Game:
 
         photo = PhotoImage(file="question.gif")
 
-        self.prize1_label = Label(self.game_box, text="?\n", padx=10, pady=10, image=photo)
+        self.prize1_label = Label(self.box_frame, text="?\n", padx=10, pady=10, image=photo)
         self.prize1_label.photo = photo
         self.prize1_label.grid(row=0, column=0)
 
-        self.prize2_label = Label(self.game_box, text="?\n", padx=10, pady=10, image=photo)
+        self.prize2_label = Label(self.box_frame, text="?\n", padx=10, pady=10, image=photo)
         self.prize2_label.photo = photo
         self.prize2_label.grid(row=0, column=1, padx=10)
 
-        self.prize3_label = Label(self.game_box, text="?\n", padx=10, pady=10, image=photo)
+        self.prize3_label = Label(self.box_frame, text="?\n", padx=10, pady=10, image=photo)
         self.prize3_label.photo = photo
         self.prize3_label.grid(row=0, column=2)
 
@@ -131,12 +132,19 @@ class Game:
                 prize_list = "Lead ($0)"
 
             prizes.append(prize)
-            stats_prizes
+            stats_prizes.append(prize_list)
+
+        photo1 = prizes[0]
+        photo2 = prizes[1]
+        photo3 = prizes[2]
 
         # Display prizes
-        self.prize1_label.config(text=prizes[0])
-        self.prize2_label.config(text=prizes[1])
-        self.prize3_label.config(text=prizes[2])
+        self.prize1_label.config(image=photo1)
+        self.prize1_label.photo = photo1
+        self.prize2_label.config(image=photo2)
+        self.prize2_label.photo = photo2
+        self.prize3_label.config(image=photo3)
+        self.prize3_label.photo = photo3
 
         # Deduct cost of game
         current_balance -= 5 * stakes_multiplier
@@ -149,6 +157,11 @@ class Game:
 
         balance_statement = "Game Cost: ${}\nPayback: ${}\nCurrent Balance: ${}".format(5*stakes_multiplier, round_winnings, current_balance)
 
+        # Add round results to stats list
+        round_summary = "{} | {} | {} - Cost: ${} | Payback: ${} | Current Balance: ${}".format(stats_prizes[0], stats_prizes[1], stats_prizes[2], stats_prizes[2], 5 * stakes_multiplier, round_winnings, current_balance)
+        self.round_stats_list.append(round_summary)
+        print(self.round_stats_list)
+
         # Edit label so user can see their balance
         self.balance_label.configure(text=balance_statement)
 
@@ -158,7 +171,7 @@ class Game:
             self.play_button.config(text="Game Over")
 
             balance_statement = "Current Balance: ${}\nYour balance is too low. You can only quit or view your stats. Sorry about that.".format(current_balance)
-            self.balance_label.config(fg="660000", font="Ariel 10 bold", text=balance_statement)
+            self.balance_label.config(fg="#660000", font="Ariel 10 bold", text=balance_statement)
 
     def to_quit(self):
         root.destroy()
@@ -167,6 +180,6 @@ class Game:
 # main routine
 if __name__ == "__main__":
     root = Tk()
-    root.title("title goes here")
+    root.title("Mystery Box Game")
     something = Start(root)
     root.mainloop()
