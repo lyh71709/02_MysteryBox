@@ -5,20 +5,28 @@ win= Tk()
 #Define the geometry of the window
 win.geometry("750x250")
 
+def setup_hover_button(button_name, button_colour):
+    colour = button_colour
+    button_name.bind('<Enter>', on_enter)
+    button_name.bind('<Leave>', lambda e: on_leave(e,colour))
+
+
 #Define functions
 def on_enter(e):
-    original_colour = button.cget("background")
-    button.config(background="Orange", foreground= "white", font=original_colour)
+    e.widget.config(background="Orange", foreground= "white")
 
-def on_leave(e):
-    new_colour = button.cget("font")
-    button.config(background=new_colour, foreground= 'black')
+def on_leave(e, colour):
+    e.widget.config(background=colour, foreground= 'black')
 
 #Create a Button
-button= Button(win, text= "Click Me", font= ('Helvetica 13 bold'), background = "red")
+button= Button(win, text= "Click Me", font= ('Helvetica 13 bold'), background = "blue")
 button.pack(pady= 20)
 
-#Bind the Enter and Leave Events to the Button
-button.bind('<Enter>', on_enter)
-button.bind('<Leave>', on_leave)
+button2= Button(win, text= "Click Me", font= ('Helvetica 13 bold'), background = "red")
+button2.pack(pady= 20)
+
+button_colour = button.cget("background")
+button2_colour = button2.cget("background")
+
 win.mainloop()
+
