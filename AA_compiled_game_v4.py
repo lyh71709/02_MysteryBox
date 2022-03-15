@@ -2,6 +2,25 @@ from tkinter import *
 from functools import partial
 import random
 
+#Define functions
+def setup_hover_button(button_name, bind_unbind, hover_colour):
+    if bind_unbind == "unbind":
+        button_name.unbind('<Enter>')
+        button_name.unbind('<Leave>')
+    else:
+        leave_colour = button_name.cget("background")
+        if hover_colour == "": enter_colour = "snow4"
+        else: enter_colour = hover_colour
+
+        button_name.bind('<Enter>', lambda e: on_enter(e,enter_colour))
+        button_name.bind('<Leave>', lambda e: on_leave(e,leave_colour))
+
+def on_enter(e, colour):
+    e.widget.config(background=colour, foreground= "white")
+
+def on_leave(e, colour):
+    e.widget.config(background=colour, foreground= 'black')
+
 class Start:
     def __init__(self, parent):
         
@@ -32,6 +51,7 @@ class Start:
         # Add funds button
         self.add_funds_button = Button(self.entry_error_frame, font="Arial 14 bold", text="Add Funds", command=self.check_funds)
         self.add_funds_button.grid(row=0, column=1, padx=10)
+        setup_hover_button(self.add_funds_button,"","")
         
         # Amount Error Label
         self.amount_error_label = Label(self.entry_error_frame, fg="maroon", text="", font="Arial", wrap=275, justify=LEFT)
@@ -61,6 +81,7 @@ class Start:
         self.mediumstakes_button.config(state=DISABLED)
         self.highstakes_button.config(state=DISABLED)
 
+
     def check_funds(self):
         starting_balance = self.start_amount_entry.get()
 
@@ -71,6 +92,14 @@ class Start:
         # Change background to white
         self.start_amount_entry.config(bg="white")
         self.amount_error_label.config(text="")
+
+        # Disable all stakes buttons
+        self.lowstakes_button.config(state=DISABLED)
+        self.mediumstakes_button.config(state=DISABLED)
+        self.highstakes_button.config(state=DISABLED)
+        setup_hover_button(self.lowstakes_button,"unbind","")
+        setup_hover_button(self.mediumstakes_button,"unbind","")
+        setup_hover_button(self.highstakes_button,"unbind","")
 
         try:
             starting_balance = int(starting_balance)
@@ -86,12 +115,18 @@ class Start:
                 self.lowstakes_button.config(state=NORMAL)
                 self.mediumstakes_button.config(state=NORMAL)
                 self.highstakes_button.config(state=NORMAL)
+                setup_hover_button(self.lowstakes_button,"", "#BD7124")
+                setup_hover_button(self.mediumstakes_button,"", "#C4C427")
+                setup_hover_button(self.highstakes_button,"", "#6BB025")
             elif starting_balance >= 10:
                 # Enable low and medium stakes buttons
                 self.lowstakes_button.config(state=NORMAL)
                 self.mediumstakes_button.config(state=NORMAL)
+                setup_hover_button(self.lowstakes_button,"", "#BD7124")
+                setup_hover_button(self.mediumstakes_button,"", "#C4C427")
             else:
                 self.lowstakes_button.config(state=NORMAL)
+                setup_hover_button(self.lowstakes_button,"", "#BD7124")
         except ValueError:
             has_errors = "yes"
             error_feedback = "Please enter a dollar amount (no text / decimals)"
@@ -171,6 +206,7 @@ class Game:
         self.play_button.focus()
         self.play_button.bind('<Return>', lambda e: self.reveal_boxes())
         self.play_button.grid(row=3)
+        setup_hover_button(self.play_button, "", "#CDCD2C")
 
         # Balance Label (Row 4)
         start_text = "Game Cost: ${}\n""\n How Much will you win?".format(stakes*5)
@@ -183,13 +219,16 @@ class Game:
 
         self.help_button = Button(self.help_export_frame, text="Help / Rules", font="Ariel 15 bold", bg="#808080", fg="white", command=self.help)
         self.help_button.grid(row=0, column=0, padx=2)
+        setup_hover_button(self.help_button, "", "#323232")
 
         self.stats_button = Button(self.help_export_frame, text="Game Stats", font="Ariel 15 bold", bg="#003366", fg="white")
         self.stats_button.grid(row=0, column=1, padx=2)
+        setup_hover_button(self.stats_button, "", "#001223")
 
         # Quit Button (Row 6)
         self.quit_button = Button(self.game_frame, text="Quit", fg="white", bg="#660000", font="Ariel 15 bold", width=20, command=self.to_quit, padx=10, pady=10)
         self.quit_button.grid(row=6, pady=10)
+        setup_hover_button(self.quit_button, "", "#400000")
 
     def reveal_boxes(self):
         # retrieve the balance from the initial function
@@ -296,6 +335,7 @@ class Help:
         # Dismiss button (Row 2)
         self.dismiss_button = Button(self.help_frame, text="Dismiss", width=10, bg=background, font=("Arial", "10", "bold"), command=partial(self.close_help, partner))
         self.dismiss_button.grid(row=2, pady=10)
+        setup_hover_button(self.dismiss_button, "", "dark orange")
 
     def close_help(self,partner):
         # Put help button back to normal...
