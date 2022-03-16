@@ -100,9 +100,17 @@ class GameStats:
         self.games_played_value_label = Label(self.details_frame, font=content, text=len(game_history), anchor="w")
         self.games_played_value_label.grid(row=4, column=1, padx=0)
 
-        # Dismiss Button (Row 3)
-        self.dismiss_button = Button(self.stats_frame, text="Dismiss", width=10, font=("Arial", "10", "bold"), command=partial(self.close_stats, partner))
-        self.dismiss_button.grid(row=3, pady=10)
+        # Button Frame (Row 3)
+        self.button_frame = Frame(self.stats_frame)
+        self.button_frame.grid(row=3)
+
+        # Export Button
+        self.export_button = Button(self.button_frame, text="Export", width=10, font=("Arial", "10", "bold"))
+        self.export_button.grid(row=0, column=0)
+
+        # Dismiss Button
+        self.dismiss_button = Button(self.button_frame, text="Dismiss", width=10, font=("Arial", "10", "bold"), command=partial(self.close_stats, partner))
+        self.dismiss_button.grid(row=0, column=1)
 
     def close_stats(self,partner):
         # Put help button back to normal...
