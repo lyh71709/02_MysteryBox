@@ -1,5 +1,6 @@
 from tkinter import *
 from functools import partial
+import re
 
 
 class Game:
@@ -105,50 +106,54 @@ class GameStats:
         self.button_frame.grid(row=3)
 
         # Export Button
-        self.export_button = Button(self.button_frame, text="Export", width=10, font=("Arial", "10", "bold"))
-        self.export_button.grid(row=0, column=0)
+        self.export_button = Button(self.button_frame, text="Export", width=10, font=("Arial", "10", "bold"), command=lambda: self.export(game_history, game_stats))
+        self.export_button.grid(row=0, column=0, pady=10)
 
         # Dismiss Button
         self.dismiss_button = Button(self.button_frame, text="Dismiss", width=10, font=("Arial", "10", "bold"), command=partial(self.close_stats, partner))
-        self.dismiss_button.grid(row=0, column=1)
+        self.dismiss_button.grid(row=0, column=1, pady=10)
 
     def close_stats(self,partner):
         # Put help button back to normal...
         partner.stats_button.config(state=NORMAL)
         self.stats_box.destroy()
 
+    def export(self, game_history, game_stats):
+        Export(self, game_history, game_stats)
+
 class Export:
     def __init__(self, partner, game_history, all_game_stats):
         print(game_history)
 
-        # Disable export button
-        partner.export_button.config(state=DISABLED)
-
         # Sets up child window
-        self.export_box  = Toplevel()
+        self.export_box = Toplevel()
 
         # If users press cross at top closes export and 'releases' export button
-        self.export_box_protocol('WM_DELETE_WINDOW', partial(self.close_export, partner))
+        self.export_box.protocol('WM_DELETE_WINDOW', partial(self.close_export, partner))
         
         # Set up GUI frame
-        self.export_frame = Frame(self.export_box, width=300)
-        self.export_box.grid()
+        self.export_frame = Frame(self.export_box, width=300,)
+        self.export_frame.grid()
 
         # Set up export heading
         self.how_heading = Label(self.export_frame, text="Export / Instructions", font="Arial 14 bold")
         self.how_heading.grid()
 
         # Export Instructions
-        self.export_text = Label(self.export_frame, text="Enter a filename")
+        self.export_text = Label(self.export_frame, text="Enter a filename", justify=LEFT, width=40, wrap=250)
         self.export_text.grid(row=1)
 
         # Warning Text
-        self.export_text = Label(self.export_frame, text="If the filename you enter below already exists, its contents will be replaced with your calculation history.", justify=LEFT, width=40, wrap=250)
+        self.export_text = Label(self.export_frame, text="If the filename you enter below already exists, its contents will be replaced with your calculation history.", justify=LEFT, bg="#ffafaf", fg="maroon", font="Arial 10 italic", wrap=225, padx=10, pady=10)
         self.export_text.grid(row=2, pady=10)
 
         # Filename Entry Box
         self.filename_entry = Entry(self.export_frame, width=20, font="Arial 14 bold", justify=CENTER)
-        self.filename_entry.grid(row=4)
+        self.filename_entry.grid(row=3, pady=10)
+
+        # Error message label (initially blank)
+        self.save_error_label = Label(self.export_frame, text="", fg="maroon")
+        self.save_error_label.grid(row=4)
 
         # Save / Cancel Frame
         self.save_cancel_frame = Frame(self.export_frame)
@@ -158,7 +163,7 @@ class Export:
         self.save_button = Button(self.save_cancel_frame, text="Save", font="Arial 15 bold", bg="#003366", fg="white", command=partial(lambda: self.save_history(partner, game_history, all_game_stats)))
         self.save_button.grid(row=0, column=0)
 
-        self.cancel_button = Button(self.save_cancel_frame, text="Save", font="Arial 15 bold", bg="660000", fg="white", command=partial(self.close_export, partner))
+        self.cancel_button = Button(self.save_cancel_frame, text="Cancel", font="Arial 15 bold", bg="#660000", fg="white", command=partial(self.close_export, partner))
         self.cancel_button.grid(row=0, column=1)
 
     def save_history(self, partner, game_history, game_stats):
@@ -173,7 +178,7 @@ class Export:
         for letter in filename:
             if re.match(valid_char, letter):
                 continue
-            elif letter == "":
+            elif letter == " ":
                 problem = "(no spaces allowed)"
             else:
                 problem = ("(no {}'s allowed)".format(letter))
@@ -189,6 +194,32 @@ class Export:
             self.filename_entry.config(bg="#ffafaf")
             print()
         else:
+            # If there are no errors, generate text file
+            # Add .txt suffix
+            filename = filename + ".txt"
+
+            # Create file to hold data
+            f = open(filename, "w+")
+
+            # Heading for stats
+            f.write("Game Statistics\n\n")
+
+            # Game stats
+            for round in game_stats:
+                f.write("{}\n".format(round))
+
+            # Heading for rounds
+            f.write("\nRound Details\n\n")
+
+            # Add a new line at the end of each item
+            for item in game_history:
+                f.write(item + "\n")
+
+            # Close file
+            f.close()
+
+    def close_export(self,partner):
+        self.export_box.destroy()
 
 # main routine
 if __name__ == "__main__":
