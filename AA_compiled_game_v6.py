@@ -315,9 +315,11 @@ class Game:
 
     def help(self):
         print("You asked for help")
+        
         get_help = Help(self)
 
     def to_stats(self, game_history, game_stats):
+        self.game_box.withdraw()
         GameStats(self, game_history, game_stats)
 
 class Help:
@@ -441,11 +443,13 @@ class GameStats:
         setup_hover_button(self.dismiss_button, "", "")
 
     def export(self, game_history, game_stats):
+        self.stats_box.withdraw()
         Export(self, game_history, game_stats)
 
     def close_stats(self,partner):
         # Put help button back to normal...
         partner.stats_button.config(state=NORMAL)
+        partner.game_box.deiconify()
         setup_hover_button(partner.stats_button,"","#001D39")
         self.stats_box.destroy()
 
@@ -555,6 +559,7 @@ class Export:
     def close_export(self,partner):
         # Re activate export button
         partner.export_button.config(state=NORMAL)
+        partner.game_box.deiconify()
         self.export_box.destroy()
 
 
