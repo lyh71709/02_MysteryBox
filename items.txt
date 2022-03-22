@@ -1,62 +1,12 @@
 Game Statistics
 
-50
-6
+25
+7
 
 Round Details
 
-Silver ($5) | Silver ($5) | Silver ($5) - Cost: $Silver ($5) | Payback: $5 | Current Balance: $6
-Silver ($5) | Silver ($5) | Silver ($5) - Cost: $Silver ($5) | Payback: $5 | Current Balance: $6
-Lead ($0) | Silver ($5) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $3
-Silver ($5) | Silver ($5) | Silver ($5) - Cost: $Silver ($5) | Payback: $5 | Current Balance: $6
-Lead ($0) | Silver ($5) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $3
-Lead ($0) | Copper ($5) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $2
-Silver ($5) | Silver ($5) | Silver ($5) - Cost: $Silver ($5) | Payback: $5 | Current Balance: $6
-Lead ($0) | Silver ($5) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $3
-Lead ($0) | Copper ($5) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $2
-Lead ($0) | Silver ($5) | Lead ($0) - Cost: $Lead ($0) | Payback: $5 | Current Balance: $2
-Silver ($5) | Silver ($5) | Silver ($5) - Cost: $Silver ($5) | Payback: $5 | Current Balance: $6
-Lead ($0) | Silver ($5) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $3
-Lead ($0) | Copper ($5) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $2
-Lead ($0) | Silver ($5) | Lead ($0) - Cost: $Lead ($0) | Payback: $5 | Current Balance: $2
-Lead ($0) | Lead ($0) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $1
-Silver ($5) | Silver ($5) | Silver ($5) - Cost: $Silver ($5) | Payback: $5 | Current Balance: $6
-Lead ($0) | Silver ($5) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $3
-Lead ($0) | Copper ($5) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $2
-Lead ($0) | Silver ($5) | Lead ($0) - Cost: $Lead ($0) | Payback: $5 | Current Balance: $2
-Lead ($0) | Lead ($0) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $1
-Copper ($5) | Copper ($5) | Silver ($5) - Cost: $Silver ($5) | Payback: $5 | Current Balance: $4
-Silver ($5) | Silver ($5) | Silver ($5) - Cost: $Silver ($5) | Payback: $5 | Current Balance: $6
-Lead ($0) | Silver ($5) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $3
-Lead ($0) | Copper ($5) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $2
-Lead ($0) | Silver ($5) | Lead ($0) - Cost: $Lead ($0) | Payback: $5 | Current Balance: $2
-Lead ($0) | Lead ($0) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $1
-Copper ($5) | Copper ($5) | Silver ($5) - Cost: $Silver ($5) | Payback: $5 | Current Balance: $4
-Lead ($0) | Silver ($5) | Silver ($5) - Cost: $Silver ($5) | Payback: $5 | Current Balance: $4
-Silver ($5) | Silver ($5) | Silver ($5) - Cost: $Silver ($5) | Payback: $5 | Current Balance: $6
-Lead ($0) | Silver ($5) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $3
-Lead ($0) | Copper ($5) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $2
-Lead ($0) | Silver ($5) | Lead ($0) - Cost: $Lead ($0) | Payback: $5 | Current Balance: $2
-Lead ($0) | Lead ($0) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $1
-Copper ($5) | Copper ($5) | Silver ($5) - Cost: $Silver ($5) | Payback: $5 | Current Balance: $4
-Lead ($0) | Silver ($5) | Silver ($5) - Cost: $Silver ($5) | Payback: $5 | Current Balance: $4
-Copper ($5) | Lead ($0) | Silver ($5) - Cost: $Silver ($5) | Payback: $5 | Current Balance: $3
-Silver ($5) | Silver ($5) | Silver ($5) - Cost: $Silver ($5) | Payback: $5 | Current Balance: $6
-Lead ($0) | Silver ($5) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $3
-Lead ($0) | Copper ($5) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $2
-Lead ($0) | Silver ($5) | Lead ($0) - Cost: $Lead ($0) | Payback: $5 | Current Balance: $2
-Lead ($0) | Lead ($0) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $1
-Copper ($5) | Copper ($5) | Silver ($5) - Cost: $Silver ($5) | Payback: $5 | Current Balance: $4
-Lead ($0) | Silver ($5) | Silver ($5) - Cost: $Silver ($5) | Payback: $5 | Current Balance: $4
-Copper ($5) | Lead ($0) | Silver ($5) - Cost: $Silver ($5) | Payback: $5 | Current Balance: $3
-Lead ($0) | Lead ($0) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $1
-Silver ($5) | Silver ($5) | Silver ($5) - Cost: $Silver ($5) | Payback: $5 | Current Balance: $6
-Lead ($0) | Silver ($5) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $3
-Lead ($0) | Copper ($5) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $2
-Lead ($0) | Silver ($5) | Lead ($0) - Cost: $Lead ($0) | Payback: $5 | Current Balance: $2
-Lead ($0) | Lead ($0) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $1
-Copper ($5) | Copper ($5) | Silver ($5) - Cost: $Silver ($5) | Payback: $5 | Current Balance: $4
-Lead ($0) | Silver ($5) | Silver ($5) - Cost: $Silver ($5) | Payback: $5 | Current Balance: $4
-Copper ($5) | Lead ($0) | Silver ($5) - Cost: $Silver ($5) | Payback: $5 | Current Balance: $3
-Lead ($0) | Lead ($0) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $1
-Lead ($0) | Copper ($5) | Copper ($5) - Cost: $Copper ($5) | Payback: $5 | Current Balance: $2
+Copper ($10) | Lead ($0) | Lead ($0) - Cost: $Lead ($0) | Payback: $10 | Current Balance: $2
+Gold ($10) | Lead ($0) | Copper ($10) - Cost: $Copper ($10) | Payback: $10 | Current Balance: $12
+Copper ($10) | Lead ($0) | Silver ($10) - Cost: $Silver ($10) | Payback: $10 | Current Balance: $6
+Copper ($10) | Copper ($10) | Silver ($10) - Cost: $Silver ($10) | Payback: $10 | Current Balance: $8
+Copper ($10) | Copper ($10) | Lead ($0) - Cost: $Lead ($0) | Payback: $10 | Current Balance: $4

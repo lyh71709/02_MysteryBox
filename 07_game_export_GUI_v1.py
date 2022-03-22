@@ -113,24 +113,27 @@ class GameStats:
         self.dismiss_button = Button(self.button_frame, text="Dismiss", width=10, font=("Arial", "10", "bold"), command=partial(self.close_stats, partner))
         self.dismiss_button.grid(row=0, column=1, pady=10)
 
+    def export(self, game_history, game_stats):
+        Export(self, game_history, game_stats)
+
     def close_stats(self,partner):
         # Put help button back to normal...
         partner.stats_button.config(state=NORMAL)
         self.stats_box.destroy()
 
-    def export(self, game_history, game_stats):
-        Export(self, game_history, game_stats)
-
 class Export:
-    def __init__(self, partner, game_history, all_game_stats):
+    def __init__(self,partner, game_history, all_game_stats):
         print(game_history)
+
+        # Disable export button
+        partner.export_button.config(state=DISABLED)
 
         # Sets up child window
         self.export_box = Toplevel()
 
         # If users press cross at top closes export and 'releases' export button
         self.export_box.protocol('WM_DELETE_WINDOW', partial(self.close_export, partner))
-        
+
         # Set up GUI frame
         self.export_frame = Frame(self.export_box, width=300,)
         self.export_frame.grid()
@@ -218,7 +221,12 @@ class Export:
             # Close file
             f.close()
 
+            # Close dialogue
+            self.close_export(partner)
+
     def close_export(self,partner):
+        # Re activate export button
+        partner.export_button.config(state=NORMAL)
         self.export_box.destroy()
 
 # main routine
