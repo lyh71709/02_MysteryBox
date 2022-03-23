@@ -151,8 +151,6 @@ class Start:
 
 class Game:
     def __init__(self, partner, stakes, starting_balance):
-        print(stakes)
-        print(starting_balance)
 
         # Initialise variables
         self.balance = IntVar()
@@ -297,7 +295,6 @@ class Game:
         # Add round results to stats list
         round_summary = "{} | {} | {} - Cost: ${} | Payback: ${} | Current Balance: ${}".format(stats_prizes[0], stats_prizes[1], stats_prizes[2], stats_prizes[2], 5 * stakes_multiplier, round_winnings, current_balance)
         self.round_stats_list.append(round_summary)
-        print(self.round_stats_list)
 
         # Edit label so user can see their balance
         self.balance_label.configure(text=balance_statement)
@@ -314,7 +311,6 @@ class Game:
         root.destroy()
 
     def help(self):
-        print("You asked for help")
         
         get_help = Help(self)
 
@@ -360,7 +356,6 @@ class Help:
 
 class GameStats:
     def __init__(self, partner, game_history, game_stats):
-        print(game_history)
 
         # Disable help button
         partner.stats_button.config(state=DISABLED)
@@ -453,7 +448,6 @@ class GameStats:
 
 class Export:
     def __init__(self,partner, game_history, all_game_stats):
-        print(game_history)
 
         # Disable export button
         partner.export_button.config(state=DISABLED)
@@ -506,7 +500,6 @@ class Export:
         has_error = "no"
 
         filename = self.filename_entry.get()
-        print(filename)
 
         for letter in filename:
             if re.match(valid_char, letter):
@@ -525,7 +518,6 @@ class Export:
         if has_error == "yes":
             self.save_error_label.config(text= "Invalid Filename - {}".format(problem))
             self.filename_entry.config(bg="#ffafaf")
-            print()
         else:
             # If there are no errors, generate text file
             # Add .txt suffix
@@ -539,7 +531,12 @@ class Export:
 
             # Game stats
             for round in game_stats:
-                f.write("{}\n".format(round))
+                if game_stats.index(round)==0:
+                    data_type = "Starting Balance"
+                else:
+                    data_type = "Current Balance"
+                
+                f.write("{}: {}\n".format(data_type ,round))
 
             # Heading for rounds
             f.write("\nRound Details\n\n")
