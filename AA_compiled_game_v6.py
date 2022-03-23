@@ -145,7 +145,7 @@ class Start:
         starting_balance = self.starting_funds.get()
 
         # Hide start up window
-        self.start_frame.destroy()
+        root.withdraw()
   
         Game(self, stakes, starting_balance)
 
@@ -364,7 +364,6 @@ class GameStats:
 
         # Disable help button
         partner.stats_button.config(state=DISABLED)
-        setup_hover_button(partner.stats_button,"unbind","")
 
         heading = "Arial 12 bold"
         content = "Arial 12"
@@ -450,7 +449,6 @@ class GameStats:
         # Put help button back to normal...
         partner.stats_button.config(state=NORMAL)
         partner.game_box.deiconify()
-        setup_hover_button(partner.stats_button,"","#001D39")
         self.stats_box.destroy()
 
 class Export:
@@ -559,8 +557,9 @@ class Export:
     def close_export(self,partner):
         # Re activate export button
         partner.export_button.config(state=NORMAL)
-        partner.game_box.deiconify()
+        partner.stats_box.deiconify()
         self.export_box.destroy()
+        
 
 
 # main routine

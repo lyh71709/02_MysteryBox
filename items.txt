@@ -1,12 +1,7 @@
 Game Statistics
 
 25
-7
+25
 
 Round Details
 
-Copper ($10) | Lead ($0) | Lead ($0) - Cost: $Lead ($0) | Payback: $10 | Current Balance: $2
-Gold ($10) | Lead ($0) | Copper ($10) - Cost: $Copper ($10) | Payback: $10 | Current Balance: $12
-Copper ($10) | Lead ($0) | Silver ($10) - Cost: $Silver ($10) | Payback: $10 | Current Balance: $6
-Copper ($10) | Copper ($10) | Silver ($10) - Cost: $Silver ($10) | Payback: $10 | Current Balance: $8
-Copper ($10) | Copper ($10) | Lead ($0) - Cost: $Lead ($0) | Payback: $10 | Current Balance: $4
